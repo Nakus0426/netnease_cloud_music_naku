@@ -4,13 +4,16 @@ import { ExplorePage } from 'explore'
 import { HomePage } from 'home'
 import { ProfilePage } from 'profile'
 import { TextModifier } from 'styles'
+import { AppStorageKey } from '../commons/constants'
 
 @Entry
-@ComponentV2
+@Component
 struct Index {
-  @Local currentTabIndex: number = 0
+  @State currentTabIndex: number = 0
   private tabsController: TabsController = new TabsController()
   private tabTextModifier: TextModifier = new TextModifier('small')
+  @StorageProp(AppStorageKey.TOP_RECT_HEIGHT)
+  topRectHeight: number = 0
 
   @Builder
   TabBuilder(title: string, index: number, icon: string, selectedIcon: string) {
@@ -32,17 +35,16 @@ struct Index {
   build() {
     Stack() {
       Navigation(ZRouter.getNavStack()) {
-
       }
       .height('100%')
       .width('100%')
-      .hideTitleBar(true)
 
       Tabs({ controller: this.tabsController }) {
         TabContent() {
           HomePage()
         }
         .tabBar(this.TabBuilder('app.string.index_tab_title_home', 0, 'app.media.tab_home', 'app.media.tab_home_fill'))
+
 
         TabContent() {
           ExplorePage()
