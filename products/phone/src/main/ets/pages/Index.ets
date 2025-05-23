@@ -6,6 +6,13 @@ import { ProfilePage } from 'profile'
 import { TextModifier } from 'styles'
 import { AppStorageKey } from '../commons/constants'
 
+interface TabBuilderOptions {
+  title: string;
+  index: number;
+  icon: string;
+  selectedIcon: string;
+}
+
 @Entry
 @Component
 struct Index {
@@ -14,21 +21,23 @@ struct Index {
   private tabTextModifier: TextModifier = new TextModifier('small')
   @StorageProp(AppStorageKey.TOP_RECT_HEIGHT)
   topRectHeight: number = 0
+  @StorageProp(AppStorageKey.BOTTOM_RECT_HEIGHT)
+  bottomRectHeight: number = 0
 
   @Builder
-  TabBuilder(title: string, index: number, icon: string, selectedIcon: string) {
+  TabBuilder(options: TabBuilderOptions) {
     Column() {
-      Image($r(this.currentTabIndex === index ? selectedIcon : icon))
+      Image($r(this.currentTabIndex === options.index ? options.selectedIcon : options.icon))
         .width(24)
-      Text($r(title))
-        .fontColor($r(this.currentTabIndex === index ? 'app.color.primary_900' : 'app.color.text_2'))
+      Text($r(options.title))
+        .fontColor($r(this.currentTabIndex === options.index ? 'app.color.primary_900' : 'app.color.text_2'))
         .attributeModifier(this.tabTextModifier)
         .margin({ top: 2 })
     }
-    .height(64)
     .justifyContent(FlexAlign.Center)
+    .padding({ top: 12, bottom: this.bottomRectHeight })
     .onClick(() => {
-      this.tabsController.changeIndex(index)
+      this.tabsController.changeIndex(options.index)
     })
   }
 
@@ -43,26 +52,42 @@ struct Index {
         TabContent() {
           HomePage()
         }
-        .tabBar(this.TabBuilder('app.string.index_tab_title_home', 0, 'app.media.tab_home', 'app.media.tab_home_fill'))
-
+        .tabBar(this.TabBuilder({
+          title: 'app.string.index_tab_title_home',
+          index: 0,
+          icon: 'app.media.tab_home',
+          selectedIcon: 'app.media.tab_home_fill'
+        }))
 
         TabContent() {
           ExplorePage()
         }
-        .tabBar(this.TabBuilder('app.string.index_tab_title_explore', 1, 'app.media.tab_explore',
-          'app.media.tab_explore_fill'))
+        .tabBar(this.TabBuilder({
+          title: 'app.string.index_tab_title_explore',
+          index: 1,
+          icon: 'app.media.tab_explore',
+          selectedIcon: 'app.media.tab_explore_fill'
+        }))
 
         TabContent() {
           CollectionPage()
         }
-        .tabBar(this.TabBuilder('app.string.index_tab_title_collection', 2, 'app.media.tab_collection',
-          'app.media.tab_collection_fill'))
+        .tabBar(this.TabBuilder({
+          title: 'app.string.index_tab_title_collection',
+          index: 2,
+          icon: 'app.media.tab_collection',
+          selectedIcon: 'app.media.tab_collection_fill'
+        }))
 
         TabContent() {
           ProfilePage()
         }
-        .tabBar(this.TabBuilder('app.string.index_tab_title_profile', 3, 'app.media.tab_profile',
-          'app.media.tab_profile_fill'))
+        .tabBar(this.TabBuilder({
+          title: 'app.string.index_tab_title_profile',
+          index: 3,
+          icon: 'app.media.tab_profile',
+          selectedIcon: 'app.media.tab_profile_fill'
+        }))
       }
       .width('100%')
       .height('100%')
@@ -73,6 +98,7 @@ struct Index {
       .backgroundBlurStyle(BlurStyle.Regular)
       .divider({ strokeWidth: 1, color: $r('app.color.border') })
       .animationMode(AnimationMode.ACTION_FIRST)
+      .barHeight('auto')
       .onAnimationStart((index, targetIndex) => {
         this.currentTabIndex = targetIndex
       })

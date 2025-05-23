@@ -13,12 +13,25 @@
           "storeFile": "C:\\Users\\82077\\.ohos\\config\\default_netnease_cloud_music_naku_OI4AuvjY0OIPzXT6Rdwkn8ocZIP0WwzDBi5J5dFIAqE=.p12",
           "storePassword": "0000001B53994A165948C5B12E213E753C97BACB6D6F356FD68D45764A20C5F09E6EF40D5482B143BAF65B"
         }
+      },
+      {
+        "name": "default2",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\Administrator\\.ohos\\config\\default2_netnease_cloud_music_naku_gtE8HiD2WFGe8GyOCxD_bxTcpEpdzjYbH9irof597oQ=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001AFAE798ECFA33164956AEC8A71BF9C5696121F1FADF89545CA13669B516AFA4A0228D95CC215C",
+          "profile": "C:\\Users\\Administrator\\.ohos\\config\\default2_netnease_cloud_music_naku_gtE8HiD2WFGe8GyOCxD_bxTcpEpdzjYbH9irof597oQ=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\Administrator\\.ohos\\config\\default2_netnease_cloud_music_naku_gtE8HiD2WFGe8GyOCxD_bxTcpEpdzjYbH9irof597oQ=.p12",
+          "storePassword": "0000001A29B5E54DC5CE229747DB1A7CCBD3BE3192531C2E873AEC72933CAD287F48B867343C08054CD1"
+        }
       }
     ],
     "products": [
       {
         "name": "default",
-        "signingConfig": "default",
+        "signingConfig": "default2",
         "targetSdkVersion": "5.0.5(17)",
         "compatibleSdkVersion": "5.0.5(17)",
         "runtimeOS": "HarmonyOS",

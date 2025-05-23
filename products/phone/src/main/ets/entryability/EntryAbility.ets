@@ -20,14 +20,14 @@ export default class EntryAbility extends UIAbility {
       mainWindow.setWindowLayoutFullScreen(true)
       const systemAvoidArea = mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM)
       const navigationIndicatorAvoidArea = mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR)
-      AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, systemAvoidArea.topRect.height)
-      AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, navigationIndicatorAvoidArea.bottomRect.height)
+      AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, px2vp(systemAvoidArea.topRect.height))
+      AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, px2vp(navigationIndicatorAvoidArea.bottomRect.height))
       mainWindow.on('avoidAreaChange', data => {
         if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
-          AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, data.area.topRect.height)
+          AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, px2vp(data.area.topRect.height))
         } else if (data.type ===
         window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
-          AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, data.area.bottomRect.height)
+          AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, px2vp(data.area.bottomRect.height))
         }
       })
     })
