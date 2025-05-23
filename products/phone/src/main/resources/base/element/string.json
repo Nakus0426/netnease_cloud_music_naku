@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": ""
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": ""
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Tunify"
+    },
+    {
+      "name": "index_tab_title_home",
+      "value": "首页"
+    },
+    {
+      "name": "index_tab_title_explore",
+      "value": "探索"
+    },
+    {
+      "name": "index_tab_title_collection",
+      "value": "资料库"
+    },
+    {
+      "name": "index_tab_title_profile",
+      "value": "我的"
+    }
+  ]
+}

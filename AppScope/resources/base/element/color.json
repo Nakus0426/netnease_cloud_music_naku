@@ -1,0 +1,44 @@
+{
+  "color": [
+    {
+      "name": "primary_500",
+      "value": "#FBC9CE"
+    },
+    {
+      "name": "primary_600",
+      "value": "#FB97A2"
+    },
+    {
+      "name": "primary_700",
+      "value": "#FB6475"
+    },
+    {
+      "name": "primary_800",
+      "value": "#FB3F54"
+    },
+    {
+      "name": "primary_900",
+      "value": "#FB233B"
+    },
+    {
+      "name": "base_color",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "text_1",
+      "value": "#121212"
+    },
+    {
+      "name": "text_2",
+      "value": "#A6A6A6"
+    },
+    {
+      "name": "background_color_overlap",
+      "value": "#CCFFFFFF"
+    },
+    {
+      "name": "border",
+      "value": "#E8E8E8"
+    }
+  ]
+}

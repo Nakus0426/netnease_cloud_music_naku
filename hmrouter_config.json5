@@ -1,0 +1,10 @@
+{
+  "scanDir": [
+    "src/main/ets/pages"
+  ],
+  "saveGeneratedFile": true,
+  "autoObfuscation": false,
+  "defaultPageTemplate": "",
+  "customPageTemplate": [
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\82077\\.ohos\\config\\default_netnease_cloud_music_naku_OI4AuvjY0OIPzXT6Rdwkn8ocZIP0WwzDBi5J5dFIAqE=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BAA8F75AC1CF231CBA39724A2BF35982CEFA4874EC2AB4866C9FC5A9545250942228FC2F4D3F2D6",
+          "profile": "C:\\Users\\82077\\.ohos\\config\\default_netnease_cloud_music_naku_OI4AuvjY0OIPzXT6Rdwkn8ocZIP0WwzDBi5J5dFIAqE=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\82077\\.ohos\\config\\default_netnease_cloud_music_naku_OI4AuvjY0OIPzXT6Rdwkn8ocZIP0WwzDBi5J5dFIAqE=.p12",
+          "storePassword": "0000001B53994A165948C5B12E213E753C97BACB6D6F356FD68D45764A20C5F09E6EF40D5482B143BAF65B"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "5.0.5(17)",
+        "compatibleSdkVersion": "5.0.5(17)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "phone",
+      "srcPath": "./products/phone",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "srcPath": "./features/home",
+    },
+    {
+      "name": "explore",
+      "srcPath": "./features/explore",
+    },
+    {
+      "name": "collection",
+      "srcPath": "./features/collection",
+    },
+    {
+      "name": "profile",
+      "srcPath": "./features/profile",
+    },
+    {
+      "name": "components",
+      "srcPath": "./commons/components",
+    },
+    {
+      "name": "utils",
+      "srcPath": "./commons/utils",
+    },
+    {
+      "name": "styles",
+      "srcPath": "./commons/styles",
+    }
+  ]
+}

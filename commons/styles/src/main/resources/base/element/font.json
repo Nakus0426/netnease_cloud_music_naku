@@ -1,0 +1,60 @@
+{
+  "string": [
+    {
+      "name": "font_size_large",
+      "value": "18fp"
+    },
+    {
+      "name": "font_size_medium",
+      "value": "16fp"
+    },
+    {
+      "name": "font_size_small",
+      "value": "12fp"
+    },
+    {
+      "name": "font_size_h1",
+      "value": "40fp"
+    },
+    {
+      "name": "font_size_h2",
+      "value": "32fp"
+    },
+    {
+      "name": "font_size_h3",
+      "value": "24fp"
+    },
+    {
+      "name": "font_size_h4",
+      "value": "20fp"
+    },
+    {
+      "name": "line_height_small",
+      "value": "18fp"
+    },
+    {
+      "name": "line_height_medium",
+      "value": "21fp"
+    },
+    {
+      "name": "line_height_large",
+      "value": "24fp"
+    },
+    {
+      "name": "line_height_h1",
+      "value": "60fp"
+    },
+    {
+      "name": "line_height_h2",
+      "value": "48fp"
+    },
+    {
+      "name": "line_height_h3",
+      "value": "36fp"
+    },
+    {
+      "name": "line_height_h4",
+      "value": "30fp"
+    }
+  ]
+}

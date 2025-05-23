@@ -1,0 +1,20 @@
+{
+  "routerMap": [
+    {
+      "name": "/home/index",
+      "pageSourceFile": "src/main/ets/_generated/ZRHomePage.ets",
+      "buildFunction": "homeHomePageBuilder",
+      "data": {
+        "needLogin": "false"
+      }
+    },
+    {
+      "name": "/home/index2",
+      "pageSourceFile": "src/main/ets/_generated/ZRHomePage2.ets",
+      "buildFunction": "homeHomePage2Builder",
+      "data": {
+        "needLogin": "false"
+      }
+    }
+  ]
+}
