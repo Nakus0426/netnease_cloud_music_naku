@@ -1,4 +1,4 @@
-type Size = 'small' | 'medium' | 'large' | 'h1' | 'h2' | 'h3' | 'h4'
+type Size = 'mini' | 'small' | 'medium' | 'large' | 'h1' | 'h2' | 'h3' | 'h4'
 type Depth = 1 | 2 | 3
 
 interface Options {
@@ -10,13 +10,14 @@ export class TextModifier implements AttributeModifier<TextAttribute> {
   private size: Size = 'medium'
   private depth: Depth = 2
   private readonly fontSizeMap: Map<Size, Resource> = new Map([
+    ['mini', $r('app.string.font_size_mini')],
     ['small', $r('app.string.font_size_small')],
-    ['medium', $r('app.string.font_size_small')],
-    ['large', $r('app.string.font_size_small')],
-    ['h1', $r('app.string.font_size_small')],
-    ['h2', $r('app.string.font_size_small')],
-    ['h3', $r('app.string.font_size_small')],
-    ['h4', $r('app.string.font_size_small')],
+    ['medium', $r('app.string.font_size_medium')],
+    ['large', $r('app.string.font_size_large')],
+    ['h1', $r('app.string.font_size_h1')],
+    ['h2', $r('app.string.font_size_h2')],
+    ['h3', $r('app.string.font_size_h3')],
+    ['h4', $r('app.string.font_size_h4')],
   ])
   private readonly lineHeightMap: Map<Size, Resource> = new Map([
     ['small', $r('app.string.line_height_small')],
@@ -42,5 +43,6 @@ export class TextModifier implements AttributeModifier<TextAttribute> {
     instance.fontSize(this.fontSizeMap.get(this.size))
     instance.lineHeight(this.lineHeightMap.get(this.size))
     instance.fontColor(this.depthMap.get(this.depth))
+    instance.fontWeight(this.size.startsWith('h') ? FontWeight.Bold : FontWeight.Normal)
   }
 }

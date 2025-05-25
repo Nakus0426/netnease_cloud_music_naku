@@ -18,7 +18,7 @@ interface TabBuilderOptions {
 @ComponentV2
 struct Index {
   private tabsController: TabsController = new TabsController()
-  private tabTextModifier: TextModifier = new TextModifier({ size: 'small' })
+  private tabTextModifier: TextModifier = new TextModifier({ size: 'mini' })
   @Local currentTabIndex: number = 0
   @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
   @Local bottomRectHeight: number = this.appStore.bottomRectHeight

@@ -10,6 +10,10 @@
     },
     {
       "name": "font_size_small",
+      "value": "14fp"
+    },
+    {
+      "name": "font_size_mini",
       "value": "12fp"
     },
     {
