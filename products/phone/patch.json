@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.example.netneasecloudmusicnaku",
-    "patchVersionCode": 2000141,
+    "patchVersionCode": 2000142,
     "versionCode": 1000000
   },
   "module": {
