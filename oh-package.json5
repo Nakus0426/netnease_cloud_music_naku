@@ -3,8 +3,7 @@
   "description": "Please describe the basic information.",
   "dependencies": {
     "@pura/harmony-utils": "^1.3.2",
-    "@hzw/zrouter": "^1.4.1",
-    "@yunkss/ef_rcp": "^1.0.8"
+    "@hzw/zrouter": "^1.4.1"
   },
   "devDependencies": {
     "@ohos/hypium": "1.0.21",
