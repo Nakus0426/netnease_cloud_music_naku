@@ -10,6 +10,7 @@
     "explore": "file:../../features/explore",
     "collection": "file:../../features/collection",
     "profile": "file:../../features/profile",
-    "styles": "file:../../commons/styles"
+    "styles": "file:../../commons/styles",
+    "utils": "file:../../commons/utils"
   }
 }

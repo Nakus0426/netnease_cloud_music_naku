@@ -1,12 +1,12 @@
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit'
-import { window } from '@kit.ArkUI'
+import { AppStorageV2, window } from '@kit.ArkUI'
 import { ZRouter } from '@hzw/zrouter'
 import BuildProfile from 'BuildProfile'
-import { AppStorageKey } from '../commons/constants'
-
-const DOMAIN = 0x0000
+import { AppStore } from 'utils'
 
 export default class EntryAbility extends UIAbility {
+  private mainWindow: window.Window | null = null
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET)
     ZRouter.initialize(config => {
@@ -16,18 +16,20 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', () => {
-      const mainWindow = windowStage.getMainWindowSync()
-      mainWindow.setWindowLayoutFullScreen(true)
-      const systemAvoidArea = mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM)
-      const navigationIndicatorAvoidArea = mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR)
-      AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, px2vp(systemAvoidArea.topRect.height))
-      AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, px2vp(navigationIndicatorAvoidArea.bottomRect.height))
-      mainWindow.on('avoidAreaChange', data => {
+      this.mainWindow = windowStage.getMainWindowSync()
+      this.mainWindow.setWindowLayoutFullScreen(true)
+      const systemAvoidArea = this.mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM)
+      const navigationIndicatorAvoidArea =
+        this.mainWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR)
+      const appStore = AppStorageV2.connect(AppStore, () => new AppStore())!
+      appStore.topRectHeight = px2vp(systemAvoidArea.topRect.height)
+      appStore.bottomRectHeight = px2vp(navigationIndicatorAvoidArea.bottomRect.height)
+      this.mainWindow.on('avoidAreaChange', data => {
         if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
-          AppStorage.setOrCreate(AppStorageKey.TOP_RECT_HEIGHT, px2vp(data.area.topRect.height))
+          appStore.topRectHeight = px2vp(data.area.topRect.height)
         } else if (data.type ===
         window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
-          AppStorage.setOrCreate(AppStorageKey.BOTTOM_RECT_HEIGHT, px2vp(data.area.bottomRect.height))
+          appStore.bottomRectHeight = px2vp(data.area.bottomRect.height)
         }
       })
     })

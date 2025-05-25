@@ -4,7 +4,8 @@ import { ExplorePage } from 'explore'
 import { HomePage } from 'home'
 import { ProfilePage } from 'profile'
 import { TextModifier } from 'styles'
-import { AppStorageKey } from '../commons/constants'
+import { AppStore } from 'utils'
+import { AppStorageV2 } from '@kit.ArkUI'
 
 interface TabBuilderOptions {
   title: string;
@@ -14,15 +15,18 @@ interface TabBuilderOptions {
 }
 
 @Entry
-@Component
+@ComponentV2
 struct Index {
-  @State currentTabIndex: number = 0
   private tabsController: TabsController = new TabsController()
-  private tabTextModifier: TextModifier = new TextModifier('small')
-  @StorageProp(AppStorageKey.TOP_RECT_HEIGHT)
-  topRectHeight: number = 0
-  @StorageProp(AppStorageKey.BOTTOM_RECT_HEIGHT)
-  bottomRectHeight: number = 0
+  private tabTextModifier: TextModifier = new TextModifier({ size: 'small' })
+  @Local currentTabIndex: number = 0
+  @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
+  @Local bottomRectHeight: number = this.appStore.bottomRectHeight
+
+  @Monitor('appStore.bottomRectHeight')
+  onBottomRectHeightChange() {
+    this.bottomRectHeight = this.appStore.bottomRectHeight
+  }
 
   @Builder
   TabBuilder(options: TabBuilderOptions) {
@@ -30,8 +34,8 @@ struct Index {
       Image($r(this.currentTabIndex === options.index ? options.selectedIcon : options.icon))
         .width(24)
       Text($r(options.title))
-        .fontColor($r(this.currentTabIndex === options.index ? 'app.color.primary_900' : 'app.color.text_2'))
         .attributeModifier(this.tabTextModifier)
+        .fontColor($r(this.currentTabIndex === options.index ? 'app.color.primary_900' : 'app.color.text_2'))
         .margin({ top: 2 })
     }
     .justifyContent(FlexAlign.Center)
@@ -105,5 +109,6 @@ struct Index {
     }
     .width('100%')
     .height('100%')
+    .backgroundColor($r('app.color.base_color'))
   }
 }

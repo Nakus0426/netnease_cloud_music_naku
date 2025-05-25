@@ -1,18 +1,50 @@
 import { Route, ZRouter } from '@hzw/zrouter'
-import { Routes } from 'utils'
+import { AppStore, Routes } from 'utils'
+import { AppStorageV2 } from '@kit.ArkUI'
 
 @ComponentV2
 @Route({ name: Routes.HOME_INDEX })
 export struct HomePage {
+  @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
+  @Local topRectHeight: number = this.appStore.topRectHeight
+
+  @Monitor('appStore.topRectHeight')
+  onTopRectHeightChange() {
+    this.topRectHeight = this.appStore.topRectHeight
+  }
+
   build() {
     Navigation(ZRouter.getNavStack()) {
-      Column() {
-        Button('跳转至HOME_2')
-          .onClick(() => ZRouter.getInstance().navigation(Routes.HOME_INDEX_2))
+      Scroll(){
+        Column(){
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+          Text('123').fontSize(40)
+        }
       }
       .width('100%')
-      .height('100%')
+      .padding({ top: this.topRectHeight })
     }
-    .backgroundColor(Color.Red)
   }
 }

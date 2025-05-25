@@ -30,6 +30,10 @@
     },
     {
       "name": "text_2",
+      "value": "#454545"
+    },
+    {
+      "name": "text_3",
       "value": "#A6A6A6"
     },
     {

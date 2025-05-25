@@ -1,1 +1,1 @@
-export * from './src/main/ets/modifiers/textModifier'
+export * from './src/main/ets/modifiers/TextModifier'
