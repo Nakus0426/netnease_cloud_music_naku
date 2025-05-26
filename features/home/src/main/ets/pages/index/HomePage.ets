@@ -53,7 +53,7 @@ export struct HomePage {
         .width('100%')
       }
       .height('100%')
-      .padding({ top: this.topRectHeight })
     }
+    .padding({ top: this.topRectHeight })
   }
 }
