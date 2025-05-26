@@ -8,6 +8,7 @@
   "dependencies": {
     "utils": "file:../../commons/utils",
     "styles": "file:../../commons/styles",
-    "components": "file:../../commons/components"
+    "components": "file:../../commons/components",
+    "apis": "file:../../commons/apis"
   }
 }

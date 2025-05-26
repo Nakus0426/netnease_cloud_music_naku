@@ -11,6 +11,7 @@
     "collection": "file:../../features/collection",
     "profile": "file:../../features/profile",
     "styles": "file:../../commons/styles",
-    "utils": "file:../../commons/utils"
+    "utils": "file:../../commons/utils",
+    "apis": "file:../../commons/apis"
   }
 }

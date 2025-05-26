@@ -4,6 +4,7 @@ import { ZRouter } from '@hzw/zrouter'
 import BuildProfile from 'BuildProfile'
 import { AppStore } from 'utils'
 import { AppUtil, WindowUtil } from '@pura/harmony-utils'
+import { rcpClient } from 'apis'
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -12,6 +13,7 @@ export default class EntryAbility extends UIAbility {
     ZRouter.initialize(config => {
       config.isLoggingEnabled = BuildProfile.DEBUG
     })
+    rcpClient.create({ baseAddress: 'http://124.221.2.138:3030' })
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
