@@ -9,7 +9,8 @@ export default {
     logEnabled: true,
     viewNodeInfo: false,
     isAutoDeleteHistoryFiles: true,
-    ignoredModules: ['apis', 'components', 'styles', 'utils']
+    ignoredModules: ['apis', 'components', 'styles', 'utils'],
+    enableUiPreviewBuild: false
   })],
   ohos: {
     overrides: {

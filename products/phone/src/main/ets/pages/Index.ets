@@ -102,7 +102,7 @@ struct Index {
       .barPosition(BarPosition.End)
       .barMode(BarMode.Fixed)
       .barOverlap(true)
-      .barBackgroundColor($r('app.color.background_color_overlap'))
+      .barBackgroundColor($r('app.color.background_overlap'))
       .backgroundBlurStyle(BlurStyle.Regular)
       .divider({ strokeWidth: 1, color: $r('app.color.border') })
       .animationMode(AnimationMode.ACTION_FIRST)
@@ -113,6 +113,6 @@ struct Index {
     }
     .width('100%')
     .height('100%')
-    .backgroundColor($r('app.color.base_color'))
+    .backgroundColor($r('app.color.base'))
   }
 }

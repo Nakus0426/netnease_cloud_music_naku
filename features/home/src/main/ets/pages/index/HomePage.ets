@@ -1,5 +1,5 @@
 import { Route, ZRouter } from '@hzw/zrouter'
-import { AppStore } from 'utils'
+import { AppStore, Routes } from 'utils'
 import { AppStorageV2 } from '@kit.ArkUI'
 import { TextModifier } from 'styles'
 import { Avatar } from 'components'
@@ -8,7 +8,7 @@ import { TopSong } from './TopSong'
 import { AlbumNewest } from './AlbumNewest'
 
 @ComponentV2
-@Route({ name: 'home' })
+@Route({ name: Routes.HOME_INDEX })
 export struct HomePage {
   @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
   @Local refreshing: boolean = false

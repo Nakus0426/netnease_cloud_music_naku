@@ -21,7 +21,7 @@
       "value": "#FB233B"
     },
     {
-      "name": "base_color",
+      "name": "base",
       "value": "#FFFFFF"
     },
     {
@@ -37,11 +37,19 @@
       "value": "#A6A6A6"
     },
     {
-      "name": "background_color_overlap",
+      "name": "background_overlap",
       "value": "#CCFFFFFF"
     },
     {
       "name": "border",
+      "value": "#E8E8E8"
+    },
+    {
+      "name": "skeleton_background",
+      "value": "#F5F5F5"
+    },
+    {
+      "name": "skeleton_background_animation",
       "value": "#E8E8E8"
     }
   ]
