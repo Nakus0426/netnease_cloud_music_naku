@@ -9,16 +9,16 @@ export struct Banner {
   @Local scaleList: Array<number> = []
   @Local translateList: Array<number> = []
   @Local zIndexList: Array<number> = []
-  private swiperController: SwiperController = new SwiperController()
-  private indicatorController: IndicatorComponentController = new IndicatorComponentController()
-  private MIN_SCALE: number = 0.75
-  private DISPLAY_COUNT: number = 1
+  private swiperController = new SwiperController()
+  private indicatorController = new IndicatorComponentController()
+  private MIN_SCALE = 0.75
+  private DISPLAY_COUNT = 1
 
   aboutToAppear() {
-    this.initBanner()
+    this.init()
   }
 
-  async initBanner() {
+  async init() {
     const res = await getBanner()
     this.banners = res.banners.map(item => item.imageUrl)
     this.banners.forEach(() => {
@@ -46,9 +46,11 @@ export struct Banner {
                 loadSrc: item,
                 border: { radius: 15 },
                 placeholderSrc: $r('app.media.image_placeholder'),
-                placeholderObjectFit: ImageFit.Cover
+                placeholderObjectFit: ImageFit.Cover,
               },
             })
+              .width('100%')
+              .margin({ left: 24, right: 24 })
               .opacity(this.opacityList[index])
               .scale({ x: this.scaleList[index], y: this.scaleList[index] })
               .translate({ x: this.translateList[index] })
@@ -58,6 +60,8 @@ export struct Banner {
         .width('100%')
         .height(130)
         .indicator(this.indicatorController)
+        .autoPlay(true)
+        .interval(10000)
         .customContentTransition({
           timeout: 1000,
           transition: (proxy: SwiperContentTransitionProxy) => {
@@ -98,5 +102,6 @@ export struct Banner {
           .selectedColor($r('app.color.primary_900')),
         )
     }
+    .padding({ bottom: 10 })
   }
 }

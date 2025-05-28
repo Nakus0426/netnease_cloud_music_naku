@@ -22,6 +22,7 @@ struct Index {
   @Local currentTabIndex: number = 0
   @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
   @Local bottomRectHeight: number = this.appStore.bottomRectHeight
+  @Provider() appTabBarHeight: Length = 0
 
   @Monitor('appStore.bottomRectHeight')
   onBottomRectHeightChange() {
@@ -43,6 +44,9 @@ struct Index {
     .onClick(() => {
       this.tabsController.changeIndex(options.index)
     })
+    .onAreaChange((oldValue, newValue) => {
+      this.appTabBarHeight = newValue.height
+    })
   }
 
   build() {
@@ -60,7 +64,7 @@ struct Index {
           title: 'app.string.index_tab_title_home',
           index: 0,
           icon: 'app.media.tab_home',
-          selectedIcon: 'app.media.tab_home_fill'
+          selectedIcon: 'app.media.tab_home_fill',
         }))
 
         TabContent() {
@@ -70,7 +74,7 @@ struct Index {
           title: 'app.string.index_tab_title_explore',
           index: 1,
           icon: 'app.media.tab_explore',
-          selectedIcon: 'app.media.tab_explore_fill'
+          selectedIcon: 'app.media.tab_explore_fill',
         }))
 
         TabContent() {
@@ -80,7 +84,7 @@ struct Index {
           title: 'app.string.index_tab_title_collection',
           index: 2,
           icon: 'app.media.tab_collection',
-          selectedIcon: 'app.media.tab_collection_fill'
+          selectedIcon: 'app.media.tab_collection_fill',
         }))
 
         TabContent() {
@@ -90,7 +94,7 @@ struct Index {
           title: 'app.string.index_tab_title_profile',
           index: 3,
           icon: 'app.media.tab_profile',
-          selectedIcon: 'app.media.tab_profile_fill'
+          selectedIcon: 'app.media.tab_profile_fill',
         }))
       }
       .width('100%')

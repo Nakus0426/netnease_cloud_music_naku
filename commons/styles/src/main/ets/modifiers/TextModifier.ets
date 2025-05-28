@@ -1,3 +1,4 @@
+
 type Size = 'mini' | 'small' | 'medium' | 'large' | 'h1' | 'h2' | 'h3' | 'h4'
 type Depth = 1 | 2 | 3
 
@@ -26,12 +27,12 @@ export class TextModifier implements AttributeModifier<TextAttribute> {
     ['h1', $r('app.string.line_height_h1')],
     ['h2', $r('app.string.line_height_h2')],
     ['h3', $r('app.string.line_height_h3')],
-    ['h4', $r('app.string.line_height_h4')]
+    ['h4', $r('app.string.line_height_h4')],
   ])
   private readonly depthMap: Map<Depth, Resource> = new Map([
     [1, $r('app.color.text_1')],
     [2, $r('app.color.text_2')],
-    [3, $r('app.color.text_3')]
+    [3, $r('app.color.text_3')],
   ])
 
   constructor(options: Options) {

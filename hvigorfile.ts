@@ -1,9 +1,16 @@
 import { appTasks } from '@ohos/hvigor-ohos-plugin'
+import { routerRegisterPlugin } from 'router-register-plugin'
 import * as sign from './sign.json'
 
 export default {
   system: appTasks,
-  plugins: [],
+  plugins: [routerRegisterPlugin({
+    scanDirs: ['src/main/ets/pages'],
+    logEnabled: true,
+    viewNodeInfo: false,
+    isAutoDeleteHistoryFiles: true,
+    ignoredModules: ['apis', 'components', 'styles', 'utils']
+  })],
   ohos: {
     overrides: {
       signingConfig: getSigningConfig(), //签名配置对象

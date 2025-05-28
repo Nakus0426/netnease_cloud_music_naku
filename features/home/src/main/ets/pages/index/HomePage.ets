@@ -1,15 +1,18 @@
 import { Route, ZRouter } from '@hzw/zrouter'
-import { AppStore, Routes } from 'utils'
+import { AppStore } from 'utils'
 import { AppStorageV2 } from '@kit.ArkUI'
 import { TextModifier } from 'styles'
 import { Avatar } from 'components'
 import { Banner } from './Banner'
+import { TopSong } from './TopSong'
+import { AlbumNewest } from './AlbumNewest'
 
 @ComponentV2
-@Route({ name: Routes.HOME_INDEX })
+@Route({ name: 'home' })
 export struct HomePage {
   @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
   @Local refreshing: boolean = false
+  @Consumer('appTabBarHeight') appTabBarHeight: Length = 0
   //region 顶部安全区域
   @Local topRectHeight: number = this.appStore.topRectHeight
 
@@ -48,12 +51,16 @@ export struct HomePage {
             .alignSelf(ItemAlign.Center)
 
             Banner()
+
+            TopSong()
+
+            AlbumNewest()
           }
         }
         .width('100%')
       }
       .height('100%')
     }
-    .padding({ top: this.topRectHeight })
+    .padding({ top: this.topRectHeight, bottom: this.appTabBarHeight })
   }
 }

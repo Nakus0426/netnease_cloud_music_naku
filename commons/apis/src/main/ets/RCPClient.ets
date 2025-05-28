@@ -48,7 +48,7 @@ class RCPClient {
 
   request<T>(config: RequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
-      const url = encodeURIComponent(`${config.url}${config.param ? this.objectToUrlParams(config.param) : ''}`)
+      const url = `${config.url}${config.param ? `?${this.objectToUrlParams(config.param)}` : ''}`
       const request =
         new rcp.Request(url, config.method, config.headers, config.data, undefined, undefined,
           config.configuration)

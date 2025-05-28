@@ -1,3 +1,20 @@
 {
-  "routerMap": []
+  "routerMap": [
+    {
+      "name": "home",
+      "pageSourceFile": "src/main/ets/_generated/ZRHomePage.ets",
+      "buildFunction": "homeHomePageBuilder",
+      "data": {
+        "needLogin": "false"
+      }
+    },
+    {
+      "name": "home_top_song",
+      "pageSourceFile": "src/main/ets/_generated/ZRTopSongPage.ets",
+      "buildFunction": "homeTopSongPageBuilder",
+      "data": {
+        "needLogin": "false"
+      }
+    }
+  ]
 }
