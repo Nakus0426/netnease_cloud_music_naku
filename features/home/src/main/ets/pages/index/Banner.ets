@@ -105,6 +105,7 @@ export struct Banner {
               }
             },
           })
+          .transition(TransitionEffect.OPACITY.animation({ duration: 200, curve: Curve.Linear }))
         }
       }
 

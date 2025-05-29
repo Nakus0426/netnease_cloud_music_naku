@@ -55,12 +55,15 @@ export struct HomePage {
             TopSong()
 
             AlbumNewest()
+
+            AlbumNewest()
           }
         }
         .width('100%')
+        .padding({ top: this.topRectHeight, bottom: this.appTabBarHeight })
       }
       .height('100%')
+      .refreshOffset(this.topRectHeight + 64)
     }
-    .padding({ top: this.topRectHeight, bottom: this.appTabBarHeight })
   }
 }

@@ -26,7 +26,7 @@ export struct Skeleton {
           .animation({
             duration: 1400,
             iterations: -1,
-            curve: Curve.Ease,
+            curve: Curve.EaseInOut,
           })
           .linearGradient({
             angle: 90,
@@ -45,6 +45,7 @@ export struct Skeleton {
       .margin(this.skeletonMargin)
       .clip(true)
       .onAppear(() => (this.positionX = '100%'))
+      .transition(TransitionEffect.OPACITY.animation({ duration: 200, curve: Curve.EaseInOut }))
     } else if (this.defaultBuilder) {
       this.defaultBuilder()
     }

@@ -63,6 +63,7 @@ export struct TopSong {
             })
         }
         .padding({ left: 24 })
+        .transition(TransitionEffect.OPACITY.animation({ duration: 200, curve: Curve.Linear }))
       } else {
         List() {
           Repeat(this.topSongs)
@@ -102,6 +103,7 @@ export struct TopSong {
         .contentStartOffset(24)
         .contentEndOffset(24)
         .scrollBar(BarState.Off)
+        .transition(TransitionEffect.OPACITY.animation({ duration: 200, curve: Curve.Linear }))
       }
     }
     .margin({ bottom: 24 })
