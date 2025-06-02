@@ -2,7 +2,7 @@ import { Route, ZRouter } from '@hzw/zrouter'
 import { AppStore, Routes } from 'utils'
 import { AppStorageV2 } from '@kit.ArkUI'
 import { TextModifier } from 'styles'
-import { Avatar } from 'components'
+import { Avatar, BlurStatusBar } from 'components'
 import { Banner } from './Banner'
 import { TopSong } from './TopSong'
 import { AlbumNewest } from './AlbumNewest'
@@ -23,47 +23,61 @@ export struct HomePage {
 
   //endregion
 
+  @Builder
+  refreshContent() {
+    Row() {
+      LoadingProgress()
+        .height(36)
+    }
+    .height(this.topRectHeight + 36)
+    .alignItems(VerticalAlign.Bottom)
+  }
+
   build() {
     Navigation(ZRouter.getNavStack()) {
-      Refresh({ refreshing: this.refreshing!! }) {
-        Scroll() {
-          Column() {
-            Flex({ alignItems: ItemAlign.Center }) {
-              Column() {
-                Text('Hi，Naku')
-                  .attributeModifier(new TextModifier({ size: 'h3', depth: 1 }))
-                Text('探索你喜爱的音乐')
-                  .attributeModifier(new TextModifier({ size: 'small', depth: 3 }))
-                  .margin({ top: 4 })
+      Stack() {
+        Refresh({ refreshing: this.refreshing!!, builder: this.refreshContent() }) {
+          Scroll() {
+            Column() {
+              Flex({ alignItems: ItemAlign.Center }) {
+                Column() {
+                  Text('Hi，Naku')
+                    .attributeModifier(new TextModifier({ size: 'h3', depth: 1 }))
+                  Text('探索你喜爱的音乐')
+                    .attributeModifier(new TextModifier({ size: 'small', depth: 3 }))
+                    .margin({ top: 4 })
+                }
+                .alignItems(HorizontalAlign.Start)
+                .layoutWeight(1)
+
+                Avatar()
+                  .width(40)
               }
-              .alignItems(HorizontalAlign.Start)
-              .layoutWeight(1)
+              .padding({
+                top: 16,
+                right: 24,
+                bottom: 24,
+                left: 24,
+              })
+              .alignSelf(ItemAlign.Center)
 
-              Avatar()
-                .width(40)
+              Banner()
+
+              TopSong()
+
+              AlbumNewest()
             }
-            .padding({
-              top: 16,
-              right: 24,
-              bottom: 24,
-              left: 24,
-            })
-            .alignSelf(ItemAlign.Center)
-
-            Banner()
-
-            TopSong()
-
-            AlbumNewest()
-
-            AlbumNewest()
           }
+          .width('100%')
+          .padding({ top: this.topRectHeight, bottom: this.appTabBarHeight })
+          .scrollBar(BarState.Off)
+          .edgeEffect(EdgeEffect.Spring)
         }
-        .width('100%')
-        .padding({ top: this.topRectHeight, bottom: this.appTabBarHeight })
+        .height('100%')
+        .refreshOffset(this.topRectHeight + 64)
+
+        BlurStatusBar()
       }
-      .height('100%')
-      .refreshOffset(this.topRectHeight + 64)
     }
   }
 }

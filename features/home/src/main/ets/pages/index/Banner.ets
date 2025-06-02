@@ -62,6 +62,7 @@ export struct Banner {
                     border: { radius: 15 },
                     placeholderSrc: $r('app.media.image_placeholder'),
                     placeholderObjectFit: ImageFit.Cover,
+                    objectFit: ImageFit.Cover
                   },
                 })
                   .width('100%')

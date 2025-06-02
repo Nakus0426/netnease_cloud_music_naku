@@ -6,6 +6,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "styles": "file:../styles"
+    "styles": "file:../styles",
+    "utils": "file:../utils"
   }
 }

@@ -107,6 +107,7 @@ struct Index {
       .divider({ strokeWidth: 1, color: $r('app.color.border') })
       .animationMode(AnimationMode.ACTION_FIRST)
       .barHeight('auto')
+      .edgeEffect(EdgeEffect.None)
       .onAnimationStart((index, targetIndex) => {
         this.currentTabIndex = targetIndex
       })
