@@ -4,6 +4,4 @@ export * from './src/main/ets/Title'
 
 export * from './src/main/ets/Skeleton'
 
-export * from './src/main/ets/BlurStatusBar'
-
-export * from './src/main/ets/NavDestinationTitle'
+export * from './src/main/ets/TitleBar'

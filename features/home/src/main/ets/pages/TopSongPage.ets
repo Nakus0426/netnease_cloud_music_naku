@@ -1,17 +1,27 @@
 import { Route } from '@hzw/zrouter'
 import { Routes } from 'utils'
-import { NavDestinationTitle } from 'components'
+import { Title, TitleBar } from 'components'
 
 @ComponentV2
 @Route({ name: Routes.HOME_TOP_SONG })
 export struct TopSongPage {
-  @Local refreshing: boolean = false
+  //#region 标题栏
   @Local titleBarHeight: number = 0
+  @Local titleBarBorderVisible: boolean = false
 
   @Builder
-  titleBar() {
-    NavDestinationTitle({ title: '新歌速递', onHeightChange: value => this.titleBarHeight = value })
+  titleBarBuilder() {
+    TitleBar({
+      title: '新歌速递',
+      borderVisible: this.titleBarBorderVisible,
+      onHeightChange: value => this.titleBarHeight = value,
+    })
   }
+
+  //#endregion
+
+  //#region 下拉刷新
+  @Local refreshing: boolean = false
 
   @Builder
   refreshContent() {
@@ -19,34 +29,41 @@ export struct TopSongPage {
       LoadingProgress()
         .height(36)
     }
-    .height(this.titleBarHeight + 36)
+    .width('100%')
+    .height(36)
     .alignItems(VerticalAlign.Bottom)
+    .justifyContent(FlexAlign.Center)
+    .position({ top: this.titleBarHeight + this.titleBarHeight / 2 - 18 })
+  }
+
+  //#endregion
+
+  private scroller: Scroller = new Scroller()
+  onDidScroll: ScrollOnScrollCallback = () => {
+    this.titleBarBorderVisible = this.scroller.currentOffset().yOffset > 0
   }
 
   build() {
     NavDestination() {
       Refresh({ refreshing: this.refreshing!!, builder: this.refreshContent }) {
-        Scroll() {
+        Scroll(this.scroller) {
           Column() {
-            Repeat([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-              1,
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-              .each(() => {
-                Text('scroll')
-                  .fontSize(32)
-                  .fontColor(Color.Red)
-              })
+            Title({ title: '今日' })
           }
+          .width('100%')
+          .height('100%')
           .padding({ top: this.titleBarHeight })
         }
         .width('100%')
         .height('100%')
         .scrollBar(BarState.Off)
         .edgeEffect(EdgeEffect.Spring)
+        .onDidScroll(this.onDidScroll)
       }
-      .refreshOffset(this.titleBarHeight + 36)
+      .refreshOffset(this.titleBarHeight)
     }
-    .title({ builder: this.titleBar, height: this.titleBarHeight }, { barStyle: BarStyle.STACK })
+    .title({ builder: this.titleBarBuilder, height: this.titleBarHeight },
+      { barStyle: BarStyle.STACK, backgroundColor: Color.Transparent })
     .hideBackButton(true)
   }
 }

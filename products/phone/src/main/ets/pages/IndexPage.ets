@@ -16,7 +16,7 @@ interface TabBuilderOptions {
 
 @Entry
 @ComponentV2
-struct Index {
+struct IndexPage {
   private tabsController: TabsController = new TabsController()
   private tabTextModifier: TextModifier = new TextModifier({ size: 'mini' })
   @Local currentTabIndex: number = 0
@@ -102,8 +102,8 @@ struct Index {
       .barPosition(BarPosition.End)
       .barMode(BarMode.Fixed)
       .barOverlap(true)
+      .barBackgroundBlurStyle(BlurStyle.Thick)
       .barBackgroundColor($r('app.color.background_overlap'))
-      .backgroundBlurStyle(BlurStyle.Regular)
       .divider({ strokeWidth: 1, color: $r('app.color.border') })
       .animationMode(AnimationMode.ACTION_FIRST)
       .barHeight('auto')

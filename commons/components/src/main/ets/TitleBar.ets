@@ -4,10 +4,11 @@ import { TextModifier } from 'styles'
 import { ZRouter } from '@hzw/zrouter'
 
 @ComponentV2
-export struct NavDestinationTitle {
+export struct TitleBar {
   @Param title: string = ''
   @Param more: boolean = false
-  //# region 顶部安全区域
+  @Param borderVisible: boolean = false
+  //#region 顶部安全区域
   @Local appStore: AppStore = AppStorageV2.connect(AppStore, () => new AppStore())!
   @Local topRectHeight: number = this.appStore.topRectHeight
 
@@ -17,9 +18,9 @@ export struct NavDestinationTitle {
     this.onHeightChange(this.titleBarHeight)
   }
 
-  //# endregion
+  //#endregion
 
-  //# region 高度
+  //#region 高度
   @Event onHeightChange: (height: number) => void
 
   @Computed
@@ -27,7 +28,7 @@ export struct NavDestinationTitle {
     return this.topRectHeight + 64
   }
 
-  //# endregion
+  //#endregion
 
   aboutToAppear() {
     this.onHeightChange(this.titleBarHeight)
@@ -53,8 +54,8 @@ export struct NavDestinationTitle {
     .width('100%')
     .height(this.titleBarHeight)
     .backgroundColor($r('app.color.background_overlap'))
-    .backgroundBlurStyle(BlurStyle.Regular)
-    .border({ width: { bottom: 1 }, color: $r('app.color.border') })
+    .backgroundBlurStyle(BlurStyle.Thick)
+    .border({ width: { bottom: 1 }, color: this.borderVisible ? $r('app.color.border') : Color.Transparent })
     .padding({ top: this.topRectHeight, right: 24, left: 24 })
   }
 }

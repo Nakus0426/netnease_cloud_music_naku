@@ -27,6 +27,18 @@
     {
       "name": "skeleton_background_animation",
       "value": "#454545"
+    },
+    {
+      "name": "placeholder",
+      "value": "#A6A6A6"
+    },
+    {
+      "name": "card",
+      "value": "#292929"
+    },
+    {
+      "name": "card_overlay",
+      "value": "#99292929"
     }
   ]
 }

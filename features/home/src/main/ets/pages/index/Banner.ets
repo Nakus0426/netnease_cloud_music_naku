@@ -2,7 +2,6 @@ import { ImageKnifeComponentV2 } from '@ohos/imageknife'
 import { getBanner } from 'apis'
 import uiEffect from '@ohos.graphics.uiEffect'
 import { Skeleton } from 'components'
-import { DisplayUtil } from '@pura/harmony-utils'
 
 @ComponentV2
 export struct Banner {
@@ -50,7 +49,7 @@ export struct Banner {
         Skeleton({
           type: 'rect',
           loading: this.loading,
-          skeletonWidth: `${px2vp(DisplayUtil.getWidth()) - 48}vp`,
+          skeletonWidth: 'calc(100% - 48vp)',
           skeletonHeight: 130,
         }) {
           Swiper(this.swiperController) {
@@ -62,7 +61,7 @@ export struct Banner {
                     border: { radius: 15 },
                     placeholderSrc: $r('app.media.image_placeholder'),
                     placeholderObjectFit: ImageFit.Cover,
-                    objectFit: ImageFit.Cover
+                    objectFit: ImageFit.Cover,
                   },
                 })
                   .width('100%')
