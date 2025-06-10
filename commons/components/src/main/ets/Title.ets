@@ -20,7 +20,7 @@ export struct Title {
     }
     .width('100%')
     .padding({ right: 24, left: 24 })
-    .margin({ bottom: 24 })
+    .margin({ bottom: 16 })
     .alignItems(VerticalAlign.Center)
   }
 }

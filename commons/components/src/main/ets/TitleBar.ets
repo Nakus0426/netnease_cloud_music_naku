@@ -53,8 +53,7 @@ export struct TitleBar {
     }
     .width('100%')
     .height(this.titleBarHeight)
-    .backgroundColor($r('app.color.background_overlap'))
-    .backgroundBlurStyle(BlurStyle.Thick)
+    .backgroundColor($r('app.color.base'))
     .border({ width: { bottom: 1 }, color: this.borderVisible ? $r('app.color.border') : Color.Transparent })
     .padding({ top: this.topRectHeight, right: 24, left: 24 })
   }
