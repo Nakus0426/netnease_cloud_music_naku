@@ -19,7 +19,7 @@ export struct SongListItem {
       ImageKnifeComponentV2({
         imageKnifeOption: {
           loadSrc: this.data.imgUrl,
-          border: { radius: 8 },
+          border: { radius: 15 },
           placeholderSrc: $r('app.media.image_placeholder'),
           placeholderObjectFit: ImageFit.Cover,
         },

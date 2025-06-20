@@ -106,6 +106,8 @@ struct IndexPage {
       .barBackgroundColor($r('app.color.background_overlap'))
       .divider({ strokeWidth: 1, color: $r('app.color.border') })
       .animationMode(AnimationMode.ACTION_FIRST)
+      .animationDuration(0)
+      .scrollable(false)
       .barHeight('auto')
       .edgeEffect(EdgeEffect.None)
       .onAnimationStart((index, targetIndex) => {

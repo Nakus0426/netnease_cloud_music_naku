@@ -2,6 +2,7 @@ import { ImageKnifeComponentV2 } from '@ohos/imageknife'
 import { getBanner } from 'apis'
 import uiEffect from '@ohos.graphics.uiEffect'
 import { Skeleton } from 'components'
+import { LengthMetrics } from '@kit.ArkUI'
 
 @ComponentV2
 export struct Banner {
@@ -117,7 +118,8 @@ export struct Banner {
           .selectedItemWidth(8)
           .selectedItemHeight(8)
           .color($r('app.color.primary_500'))
-          .selectedColor($r('app.color.primary_900')),
+          .selectedColor($r('app.color.primary_900'))
+          .space(new LengthMetrics(12)),
         )
     }
     .padding({ bottom: 10 })
